@@ -40,7 +40,7 @@ function validateForm() {
     row.appendChild(td4);
     row.appendChild(td5);
     row.appendChild(tdButton);
-    table.children[0].appendChild(row);
+    table.appendChild(row);
   }
 
   // return false to not refresh on submit

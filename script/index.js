@@ -9,7 +9,6 @@ function validateForm() {
   let prenume = document.forms["myForm"]["fprenume"].value;
   let email = document.forms["myForm"]["femail"].value;
   let chooseFile = document.forms["myForm"]["img"];
-  readURL(chooseFile);
   let sex = document.forms["myForm"]["sex"].value;
   let date = document.forms["myForm"]["trip-start"].value;
   if (nume == "" || prenume == "" || email == "") {

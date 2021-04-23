@@ -27,8 +27,16 @@ function validateForm() {
     var td3 = document.createElement("td");
     var td4 = document.createElement("td");
     var td5 = document.createElement("td");
+    var td6 = document.createElement("td");
+    var td7 = document.createElement("td");
+    var tdImg = document.createElement("img");
+    tdImg.style = "width:50px;height:50px;";
+    tdImg.id = "header";
+    td6.append(tdImg);
     var tdButton = document.createElement("button");
     tdButton.className = "deleteBtn";
+    tdButton.style = "width:25px;height:25px;";
+    td7.append(tdButton);
     td1.innerHTML = nume;
     td2.innerHTML = prenume;
     td3.innerHTML = email;
@@ -39,7 +47,8 @@ function validateForm() {
     row.appendChild(td3);
     row.appendChild(td4);
     row.appendChild(td5);
-    row.appendChild(tdButton);
+    row.appendChild(td6);
+    row.appendChild(td7);
     table.appendChild(row);
   }
 

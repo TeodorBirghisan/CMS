@@ -28,6 +28,7 @@ function validateForm() {
     var td4 = document.createElement("td");
     var td5 = document.createElement("td");
     var tdButton = document.createElement("button");
+    tdButton.className = "deleteBtn";
     td1.innerHTML = nume;
     td2.innerHTML = prenume;
     td3.innerHTML = email;

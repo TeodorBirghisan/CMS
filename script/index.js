@@ -5,7 +5,7 @@ function validateForm() {
   let chooseFile = document.forms["myForm"]["img"].value;
   let sex = document.forms["myForm"]["sex"].value;
   let date = document.forms["myForm"]["trip-start"].value;
-  if (chooseFile == "" || nume == "" || prenume == "" || email == "") {
+  if (nume == "" || prenume == "" || email == "") {
     alert("Don't leave empty fields");
   } else {
     var table = document.getElementById("results");

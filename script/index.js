@@ -26,7 +26,13 @@ function validateForm() {
     row.appendChild(td3);
     row.appendChild(td4);
     row.appendChild(td5);
+    row.appendChild(tdButton);
     table.children[0].appendChild(row);
+    console.log(chooseFile);
+    var img = document.createElement("img");
+    img.src = chooseFile;
+    var src = document.getElementById("header");
+    src.appendChild(img);
   }
 
   // return false to not refresh on submit

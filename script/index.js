@@ -1,8 +1,13 @@
+jQuery(document).ready(function ($) {
+  console.log("ready!");
+});
+
 function validateForm() {
   let nume = document.forms["myForm"]["fnume"].value;
   let prenume = document.forms["myForm"]["fprenume"].value;
   let email = document.forms["myForm"]["femail"].value;
-  let chooseFile = document.forms["myForm"]["img"].value;
+  let chooseFile = document.forms["myForm"]["img"];
+  readURL(chooseFile);
   let sex = document.forms["myForm"]["sex"].value;
   let date = document.forms["myForm"]["trip-start"].value;
   if (nume == "" || prenume == "" || email == "") {
@@ -28,13 +33,20 @@ function validateForm() {
     row.appendChild(td5);
     row.appendChild(tdButton);
     table.children[0].appendChild(row);
-    console.log(chooseFile);
-    var img = document.createElement("img");
-    img.src = chooseFile;
-    var src = document.getElementById("header");
-    src.appendChild(img);
   }
 
   // return false to not refresh on submit
   return false;
+}
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $("#header").attr("src", e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
 }

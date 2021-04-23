@@ -1,5 +1,10 @@
 jQuery(document).ready(function ($) {
   console.log("ready!");
+  $("#tbody").on("click", ".deleteBtn", function () {
+    console.log("delete");
+
+    $(this).closest("tr").remove();
+  });
 });
 
 function validateForm() {

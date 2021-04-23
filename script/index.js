@@ -7,5 +7,27 @@ function validateForm() {
   let date = document.forms["myForm"]["trip-start"].value;
   if (chooseFile == "" || nume == "" || prenume == "" || email == "") {
     alert("Don't leave empty fields");
+  } else {
+    var table = document.getElementById("results");
+    var row = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+    var td4 = document.createElement("td");
+    var td5 = document.createElement("td");
+    td1.innerHTML = nume;
+    td2.innerHTML = prenume;
+    td3.innerHTML = email;
+    td4.innerHTML = sex;
+    td5.innerHTML = date;
+    row.appendChild(td1);
+    row.appendChild(td2);
+    row.appendChild(td3);
+    row.appendChild(td4);
+    row.appendChild(td5);
+    table.children[0].appendChild(row);
   }
+
+  // return false to not refresh on submit
+  return false;
 }

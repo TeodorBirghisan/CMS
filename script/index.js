@@ -55,12 +55,12 @@ function validateForm() {
   return false;
 }
 
-function readURL(input) {
+function readURL(input, id) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      $("#header").attr("src", e.target.result);
+      $("#header" + id).attr("src", e.target.result);
     };
 
     reader.readAsDataURL(input.files[0]);

@@ -33,7 +33,7 @@ function validateForm() {
     td2.innerHTML = prenume;
     td3.innerHTML = email;
     td4.innerHTML = sex;
-    td5.innerHTML = date;
+    td5.innerHTML = formatDate(date);
     row.appendChild(td1);
     row.appendChild(td2);
     row.appendChild(td3);
@@ -57,4 +57,25 @@ function readURL(input) {
 
     reader.readAsDataURL(input.files[0]);
   }
+}
+
+function formatDate(userDate) {
+  var d = new Date(userDate);
+
+  const monthNames = [
+    "Ianuarie",
+    "Februarie",
+    "Martie",
+    "Aprilie",
+    "Mai",
+    "Iunie",
+    "Iulie",
+    "August",
+    "Septembrie",
+    "Octombrie",
+    "Noiembrie",
+    "Decembrie",
+  ];
+
+  return d.getDay() + " " + monthNames[d.getMonth()] + " " + d.getFullYear();
 }

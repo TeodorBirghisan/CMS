@@ -30,7 +30,7 @@ function validateForm() {
     var td7 = document.createElement("td");
     var tdImg = document.createElement("img");
     tdImg.style = "width:50px;height:50px;";
-    tdImg.id = "header";
+    tdImg.id = "header" + id;
     td6.append(tdImg);
     var tdButton = document.createElement("button");
     tdButton.className = "deleteBtn";

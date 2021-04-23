@@ -18,7 +18,9 @@ function validateForm() {
   if (nume == "" || prenume == "" || email == "") {
     alert("Don't leave empty fields");
   } else {
-    var table = document.getElementById("results");
+    var table = document
+      .getElementById("results")
+      .getElementsByTagName("tbody")[0];
     var row = document.createElement("tr");
     var td1 = document.createElement("td");
     var td2 = document.createElement("td");

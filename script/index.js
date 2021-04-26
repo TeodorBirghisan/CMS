@@ -87,3 +87,23 @@ function formatDate(userDate) {
 
   return d.getDay() + " " + monthNames[d.getMonth()] + " " + d.getFullYear();
 }
+
+function filterFunction() {
+  var input, filter, table, tr, td, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("results");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        console.log(txtValue.toUpperCase().indexOf(filter));
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}

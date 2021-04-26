@@ -104,3 +104,26 @@ function filterFunction() {
     }
   }
 }
+
+function convertDate(d) {
+  var p = d.split("-");
+  return +(p[2] + p[1] + p[0]);
+}
+
+function sortByDate() {
+  var tbody = document.querySelector("#results tbody");
+  var rows = [].slice.call(tbody.querySelectorAll("tr"));
+  console.log(rows);
+  rows.sort(function (a, b) {
+    return (
+      convertDate(a.cells[4].innerHTML) - convertDate(b.cells[4].innerHTML)
+    );
+  });
+  rows.forEach(function (v) {
+    tbody.appendChild(v);
+  });
+}
+
+window.onload = () => {
+  document.querySelector("#sortBtn").addEventListener("click", sortByDate);
+};

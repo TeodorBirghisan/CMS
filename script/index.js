@@ -97,7 +97,6 @@ function filterFunction() {
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        console.log(txtValue.toUpperCase().indexOf(filter));
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";

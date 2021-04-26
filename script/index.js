@@ -108,7 +108,7 @@ function filterFunction() {
 
 function convertDate(d) {
   var p = d.split("-");
-  return +(p[2] + p[1] + p[0]);
+  return +(p[0] + p[1] + p[2]);
 }
 
 function sortByDate() {

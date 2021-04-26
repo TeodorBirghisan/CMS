@@ -68,6 +68,7 @@ function readURL(input, id) {
 }
 
 function formatDate(userDate) {
+  var date = userDate.split("-");
   const monthNames = [
     "Ianuarie",
     "Februarie",
@@ -83,7 +84,7 @@ function formatDate(userDate) {
     "Decembrie",
   ];
 
-  return d.getDay() + " " + monthNames[d.getMonth()] + " " + d.getFullYear();
+  return date[0] + " " + monthNames[parseInt(date[1]) - 1] + " " + date[2];
 }
 
 function filterFunction() {

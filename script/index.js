@@ -40,7 +40,7 @@ function validateForm() {
     td2.innerHTML = prenume;
     td3.innerHTML = email;
     td4.innerHTML = sex;
-    td5.innerHTML = formatDate(date);
+    td5.innerHTML = date;
     row.appendChild(td1);
     row.appendChild(td2);
     row.appendChild(td3);
@@ -68,8 +68,6 @@ function readURL(input, id) {
 }
 
 function formatDate(userDate) {
-  var d = new Date(userDate);
-
   const monthNames = [
     "Ianuarie",
     "Februarie",

@@ -121,11 +121,22 @@ function convertDate(d) {
 function sortByDate() {
   var tbody = document.querySelector("#results tbody");
   var rows = [].slice.call(tbody.querySelectorAll("tr"));
-  console.log(rows);
+  var sortAttribute = document.getElementById("sortBtn").getAttribute("sort");
+  if (sortAttribute == "up")
+    document.getElementById("sortBtn").setAttribute("sort", "down");
+  else document.getElementById("sortBtn").setAttribute("sort", "up");
   rows.sort(function (a, b) {
-    return (
-      convertDate(a.cells[4].innerHTML) - convertDate(b.cells[4].innerHTML)
-    );
+    if (sortAttribute == "up") {
+      return (
+        convertDate(a.cells[4].innerHTML) - convertDate(b.cells[4].innerHTML)
+      );
+    }
+
+    if (sortAttribute == "down") {
+      return (
+        convertDate(b.cells[4].innerHTML) - convertDate(a.cells[4].innerHTML)
+      );
+    }
   });
   rows.forEach(function (v) {
     tbody.appendChild(v);

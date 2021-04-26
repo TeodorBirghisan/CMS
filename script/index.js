@@ -91,13 +91,20 @@ function filterFunction() {
   var input, filter, table, tr, td, txtValue;
   input = document.getElementById("search");
   filter = input.value.toUpperCase();
+  var filterSex = $("#filterSex").val();
+  var filterInput = filterSex.toUpperCase();
   table = document.getElementById("results");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
+    tdSex = tr[i].getElementsByTagName("td")[3];
     if (td) {
       txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      txtValueSex = tdSex.textContent || tdSex.innerText;
+      if (
+        txtValue.toUpperCase().indexOf(filter) > -1 &&
+        txtValueSex.toUpperCase().indexOf(filterInput) > -1
+      ) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";

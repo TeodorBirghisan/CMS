@@ -50,6 +50,14 @@
     <div>
         <input type="text" id="search" onkeyup="filterFunction()" placeholder="Cautare...">
     </div>
+    <div class="sex">
+        <select id="filterSex" required class="styled-input" onchange="filterFunction()">
+            <option value="" selected="selected">None</option>
+            <option value="masculin">Masculin</option>
+            <option value="feminin">Feminin</option>
+            <option value="altele">Altele</option>
+        </select>
+    </div>
     <div class="resultsTable">
         <table border="1" id="results">
             <thead>

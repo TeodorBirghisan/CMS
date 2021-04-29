@@ -1,5 +1,13 @@
 jQuery(document).ready(function ($) {
   $("#tbody").on("click", ".deleteBtn", function () {
+    $.ajax({
+      method: "DELETE",
+      url: `https://localhost:5001/employee/EmployeeControler/${this.value}`,
+      success: function (data) {},
+      error: function (data) {
+        alert(`Failed to load employees list.`);
+      },
+    });
     $(this).closest("tr").remove();
   });
 });
@@ -77,6 +85,7 @@ function appendRow(employee) {
   td6.append(tdImg);
   var tdButton = document.createElement("button");
   tdButton.className = "deleteBtn";
+  tdButton.value = employee.id;
   tdButton.style = "width:25px;height:25px;";
   td7.append(tdButton);
   td1.innerHTML = employee.firstName;

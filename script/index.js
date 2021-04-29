@@ -4,58 +4,92 @@ jQuery(document).ready(function ($) {
   });
 });
 
+jQuery(document).ready(function ($) {
+  $.ajax({
+    method: "GET",
+    url: "https://localhost:5001/employee/EmployeeControler",
+    success: function (data) {
+      loadEmployees(data);
+    },
+    error: function (data) {
+      alert(`Failed to load employees list.`);
+    },
+  });
+});
+
+function loadEmployees(employeesList) {
+  for (index = 0; index < employeesList.length; index++) {
+    appendRow(employeesList[index]);
+  }
+}
+
 function validateForm() {
-  let nume = document.forms["myForm"]["fnume"].value;
-  let prenume = document.forms["myForm"]["fprenume"].value;
-  let email = document.forms["myForm"]["femail"].value;
-  let chooseFile = document.forms["myForm"]["img"];
-  let sex = document.forms["myForm"]["sex"].value;
-  let date = document.forms["myForm"]["trip-start"].value;
+  var newEmployee = new Object();
+  newEmployee.Id = 0;
+  newEmployee.firstName = document.forms["myForm"]["fnume"].value;
+  newEmployee.lastName = document.forms["myForm"]["fprenume"].value;
+  newEmployee.email = document.forms["myForm"]["femail"].value;
+  newEmployee.picture = "pic.jpg"; ///document.forms["myForm"]["img"];
+  newEmployee.gender = document.forms["myForm"]["sex"].value;
+  newEmployee.birthdate = document.forms["myForm"]["trip-start"].value;
   if (nume == "" || prenume == "" || email == "") {
     alert("Don't leave empty fields");
   } else {
-    var table = document
-      .getElementById("results")
-      .getElementsByTagName("tbody")[0];
-    var id = document.getElementById("results").getElementsByTagName("tr")
-      .length;
-    readURL(chooseFile, id);
-    var row = document.createElement("tr");
-    var td1 = document.createElement("td");
-    var td2 = document.createElement("td");
-    var td3 = document.createElement("td");
-    var td4 = document.createElement("td");
-    var td5 = document.createElement("td");
-    var td6 = document.createElement("td");
-    var td7 = document.createElement("td");
-    var tdImg = document.createElement("img");
-    tdImg.style = "width:50px;height:50px;";
-    tdImg.id = "header" + id;
-    td6.append(tdImg);
-    var tdButton = document.createElement("button");
-    tdButton.className = "deleteBtn";
-    tdButton.style = "width:25px;height:25px;";
-    td7.append(tdButton);
-    td1.innerHTML = nume;
-    td2.innerHTML = prenume;
-    td3.innerHTML = email;
-    td4.innerHTML = sex;
-    td5.innerHTML = date;
-    row.appendChild(td1);
-    row.appendChild(td2);
-    row.appendChild(td3);
-    row.appendChild(td4);
-    row.appendChild(td5);
-    row.appendChild(td6);
-    row.appendChild(td7);
-    table.appendChild(row);
+    $.ajax({
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify(newEmployee),
+      url: "https://localhost:5001/employee/EmployeeControler",
+      success: function (data) {
+        appendRow(data);
+      },
+      error: function (data) {
+        alert(`Failed to load employees list.`);
+      },
+    });
   }
 
   // return false to not refresh on submit
   return false;
 }
 
+function appendRow(employee) {
+  var table = document
+    .getElementById("results")
+    .getElementsByTagName("tbody")[0];
+  var id = document.getElementById("results").getElementsByTagName("tr").length;
   //readURL(chooseFile, id);
+  var row = document.createElement("tr");
+  var td1 = document.createElement("td");
+  var td2 = document.createElement("td");
+  var td3 = document.createElement("td");
+  var td4 = document.createElement("td");
+  var td5 = document.createElement("td");
+  var td6 = document.createElement("td");
+  var td7 = document.createElement("td");
+  var tdImg = document.createElement("img");
+  tdImg.style = "width:50px;height:50px;";
+  tdImg.id = "header" + id;
+  td6.append(tdImg);
+  var tdButton = document.createElement("button");
+  tdButton.className = "deleteBtn";
+  tdButton.style = "width:25px;height:25px;";
+  td7.append(tdButton);
+  td1.innerHTML = employee.firstName;
+  td2.innerHTML = employee.lastName;
+  td3.innerHTML = employee.email;
+  td4.innerHTML = employee.gender;
+  td5.innerHTML = employee.birthdate;
+  row.appendChild(td1);
+  row.appendChild(td2);
+  row.appendChild(td3);
+  row.appendChild(td4);
+  row.appendChild(td5);
+  row.appendChild(td6);
+  row.appendChild(td7);
+  table.appendChild(row);
+}
+
 function readURL(input, id) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();

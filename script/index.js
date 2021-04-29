@@ -32,7 +32,11 @@ function validateForm() {
   newEmployee.picture = "pic.jpg"; ///document.forms["myForm"]["img"];
   newEmployee.gender = document.forms["myForm"]["sex"].value;
   newEmployee.birthdate = document.forms["myForm"]["trip-start"].value;
-  if (nume == "" || prenume == "" || email == "") {
+  if (
+    newEmployee.firstName == "" ||
+    newEmployee.lastName == "" ||
+    newEmployee.email == ""
+  ) {
     alert("Don't leave empty fields");
   } else {
     $.ajax({
